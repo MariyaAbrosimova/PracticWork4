@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание открыток</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Конструктор открыток</h2>
+
+        <div class="creator-box">
+            <div class="inputs-group">
+                <textarea id="cardText" placeholder="Текст поздравления..."></textarea>
+                <input type="text" id="cardFrom" placeholder="От кого">
+                <input type="text" id="cardTo" placeholder="Кому">
+            </div>
+
+            <div class="actions-row">
+                <!-- Кнопка заблокирована по умолчанию, пока не заполнены все поля -->
+                <button id="sendBtn" disabled>Отправить</button>
+
+                <!-- Выпадающий список тем -->
+                <div class="theme-dropdown">
+                    <button type="button" id="themeBtn">Тема: Светлая ▾</button>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <div class="dropdown-item active" data-theme="light" data-name="Светлая">Светлая</div>
+                        <div class="dropdown-item" data-theme="dark" data-name="Тёмная">Тёмная</div>
+                        <div class="dropdown-item" data-theme="sunset" data-name="Закат">Закат</div>
+                        <div class="dropdown-item" data-theme="newyear" data-name="Новогодняя">Новогодняя</div>
+                        <div class="dropdown-item" data-theme="ocean" data-name="Морской бриз">Морской бриз</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="history-header">
+            <h3>История открыток</h3>
+            <button class="clear-history-btn" id="clearHistoryBtn">Очистить историю</button>
+        </div>
+
+        <div class="cards-grid" id="cardsHistory"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

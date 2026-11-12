@@ -1,0 +1,242 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #333;
+    padding: 30px 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Блок создания открытки */
+.creator-box {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+.inputs-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #ccd4e0;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+input:focus, textarea:focus {
+    border-color: #4a6cf7;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 70px;
+}
+
+/* Панель с кнопкой отправки и выбором темы */
+.actions-row {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+#sendBtn {
+    padding: 10px 24px;
+    background-color: #4a6cf7;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, opacity 0.2s;
+}
+
+#sendBtn:hover:not(:disabled) {
+    background-color: #3656d6;
+}
+
+#sendBtn:disabled {
+    background-color: #b0b8c9;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Выпадающий список тем */
+.theme-dropdown {
+    position: relative;
+}
+
+#themeBtn {
+    padding: 10px 18px;
+    background-color: #f8f9fa;
+    color: #333;
+    border: 1.5px solid #ccd4e0;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#themeBtn:hover {
+    background-color: #eef1f6;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    min-width: 210px;
+    background: #ffffff;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    z-index: 10;
+    overflow: hidden;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    padding: 10px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f4ff;
+}
+
+.dropdown-item.active {
+    background-color: #e6edff;
+    font-weight: 600;
+    color: #3656d6;
+}
+
+/* История открыток */
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.clear-history-btn {
+    padding: 6px 12px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+/* Базовый стиль самой открытки */
+.postcard {
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 170px;
+    position: relative;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.postcard-to {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.postcard-text {
+    font-size: 14px;
+    line-height: 1.45;
+    margin-bottom: 14px;
+    flex-grow: 1;
+}
+
+.postcard-from {
+    font-size: 13px;
+    font-style: italic;
+    text-align: right;
+    opacity: 0.9;
+}
+
+/* 5 ТЕМ ОФОРМЛЕНИЯ ОТКРЫТОК */
+/* 1. Светлая */
+.postcard.light {
+    background: #ffffff;
+    color: #333333;
+    border: 1px solid #dce1e8;
+}
+
+/* 2. Тёмная */
+.postcard.dark {
+    background: #232734;
+    color: #f1f3f5;
+    border: 1px solid #383e52;
+}
+
+/* 3. Закат (градиент) */
+.postcard.sunset {
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    color: #ffffff;
+}
+
+/* 4. Новогодняя (тематическая со снежинками и ёлкой) */
+.postcard.newyear {
+    background: linear-gradient(135deg, #0f4c3a, #1b7a5e);
+    color: #ffffff;
+    border: 2px solid #ffd700;
+}
+.postcard.newyear::before {
+    content: "❄️ 🎄 ❄️";
+    display:lock;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+/* 5. Морской бриз (градиент) */
+.postcard.ocean {
+    background: linear-gradient(135deg, #2193b0, #6dd5ed);
+    color: #ffffff;
+}
